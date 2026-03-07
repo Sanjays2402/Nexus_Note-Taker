@@ -99,3 +99,17 @@ export default function App() {
               <div className="flex justify-between items-center px-4 py-2 border border-white/5 bg-white/[0.02] rounded-lg">
                 <span>AI Chat</span>
                 <kbd className="font-mono text-xs text-white/40">Cmd+/</kbd>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <AiChat isOpen={isAIOpen} onClose={() => setIsAIOpen(false)} />
+
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      <GraphView isOpen={isGraphOpen} onClose={() => setIsGraphOpen(false)} />
+      <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
+    </div>
+  );
+}
