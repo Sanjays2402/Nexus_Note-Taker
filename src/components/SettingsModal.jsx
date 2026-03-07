@@ -6,7 +6,9 @@ import { saveAs } from 'file-saver';
 
 export default function SettingsModal({ isOpen, onClose }) {
   const { settings, updateSettings, getAllNotes } = useStore();
-  const [apiKey, setApiKey] = useState(settings.claudeApiKey || '');
+  const [provider, setProvider] = useState(settings.aiProvider || 'claude');
+  const [claudeKey, setClaudeKey] = useState(settings.claudeApiKey || '');
+  const [openAiKey, setOpenAiKey] = useState(settings.openAiApiKey || '');
   const [theme, setTheme] = useState(settings.theme || 'dark');
   const [fontSize, setFontSize] = useState(settings.fontSize || 14);
 
@@ -14,7 +16,9 @@ export default function SettingsModal({ isOpen, onClose }) {
 
   const handleSave = () => {
     updateSettings({
-      claudeApiKey: apiKey,
+      aiProvider: provider,
+      claudeApiKey: claudeKey,
+      openAiApiKey: openAiKey,
       theme,
       fontSize
     });
@@ -54,13 +58,33 @@ export default function SettingsModal({ isOpen, onClose }) {
 
         <div className="p-6 flex flex-col gap-8">
           <div className="flex flex-col gap-2">
-            <label className="text-[13px] font-medium text-white">Claude API Key</label>
+            <label className="text-[13px] font-medium text-white">AI Provider</label>
+            <div className="flex bg-[#181818] border border-white/10 rounded-lg p-1 w-full relative">
+              <button
+                onClick={() => setProvider('claude')}
+                className={`flex-1 flex items-center justify-center text-[12px] font-medium py-1.5 rounded-md transition-colors ${provider === 'claude' ? 'bg-[#2a2a2a] text-white border border-white/5 shadow-sm' : 'text-white/40 hover:text-white/80'}`}
+              >
+                Claude
+              </button>
+              <button
+                onClick={() => setProvider('openai')}
+                className={`flex-1 flex items-center justify-center text-[12px] font-medium py-1.5 rounded-md transition-colors ${provider === 'openai' ? 'bg-[#2a2a2a] text-white border border-white/5 shadow-sm' : 'text-white/40 hover:text-white/80'}`}
+              >
+                OpenAI
+              </button>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="text-[13px] font-medium text-white">
+              {provider === 'claude' ? 'Claude API Key' : 'OpenAI API Key'}
+            </label>
             <div className="relative">
               <input
                 type="password"
-                value={apiKey}
-                onChange={(e) => setApiKey(e.target.value)}
-                placeholder="sk-ant-..."
+                value={provider === 'claude' ? claudeKey : openAiKey}
+                onChange={(e) => provider === 'claude' ? setClaudeKey(e.target.value) : setOpenAiKey(e.target.value)}
+                placeholder={provider === 'claude' ? "sk-ant-..." : "sk-..."}
                 className="w-full bg-[#181818] border border-white/10 rounded-lg px-3 py-2 text-[13px] text-text-primary outline-none focus:border-white/30 focus:bg-[#222] transition-colors placeholder-white/20 shadow-inner"
               />
             </div>

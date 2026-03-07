@@ -9,7 +9,9 @@ export const useStore = create(
       settings: {
         theme: 'dark',
         fontSize: 14,
+        aiProvider: 'claude', // 'claude' or 'openai'
         claudeApiKey: '',
+        openAiApiKey: '',
       },
       activeNoteId: null,
 
