@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @theme {
   --color-dark-bg: #0f0f0f;
   --color-dark-sidebar: #141414;
@@ -8,3 +9,10 @@
   --color-accent: #6366f1;
 }
 body { background-color: var(--color-dark-bg); color: var(--color-text-primary); margin: 0; }
+html.light body {
+  --color-dark-bg: #ffffff;
+  --color-dark-sidebar: #f3f4f6;
+  --color-dark-editor: #ffffff;
+  --color-text-primary: #111827;
+  --color-link: #3b82f6;
+}
