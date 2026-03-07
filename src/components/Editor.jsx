@@ -74,6 +74,13 @@ export default function Editor() {
       let anchorOffset = selection.from + prefix.length;
       let headOffset = selection.to + prefix.length;
 
+      if (selection.empty && suffix) {
+        const placeholder = prefix === '**' ? 'bold text' : prefix === '*' ? 'italic text' : prefix === '`' ? 'code' : 'text';
+        insertText = `${prefix}${placeholder}${suffix}`;
+        anchorOffset = selection.from + prefix.length;
+        headOffset = selection.from + prefix.length + placeholder.length;
+      }
+
       if (isLineStart) {
         const line = state.doc.lineAt(selection.from);
         if (line.text.startsWith(prefix)) {
