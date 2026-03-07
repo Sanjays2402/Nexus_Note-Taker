@@ -52,62 +52,60 @@ export default function SettingsModal({ isOpen, onClose }) {
           </button>
         </div>
 
-        <div className="p-6 flex flex-col gap-6">
-          <div className="space-y-2.5">
-            <label className="text-[13px] font-medium text-white/80">Claude API Key</label>
-            <input
-              type="password"
-              value={apiKey}
-              onChange={(e) => setApiKey(e.target.value)}
-              placeholder="sk-ant-..."
-              className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-[13px] text-text-primary outline-none focus:border-white/30 transition-colors placeholder-white/20"
-            />
-            <p className="text-[11px] text-white/40">Stored locally in your browser.</p>
+        <div className="p-6 flex flex-col gap-8">
+          <div className="flex flex-col gap-2">
+            <label className="text-[13px] font-medium text-white">Claude API Key</label>
+            <div className="relative">
+              <input
+                type="password"
+                value={apiKey}
+                onChange={(e) => setApiKey(e.target.value)}
+                placeholder="sk-ant-..."
+                className="w-full bg-[#181818] border border-white/10 rounded-lg px-3 py-2 text-[13px] text-text-primary outline-none focus:border-white/30 focus:bg-[#222] transition-colors placeholder-white/20 shadow-inner"
+              />
+            </div>
+            <p className="text-[12px] text-white/40 mt-1">Stored locally in your browser workspace.</p>
           </div>
 
-          <div className="space-y-2.5">
-            <label className="text-[13px] font-medium text-white/80">Editor Theme</label>
-            <div className="flex gap-4">
-              <label className="flex items-center gap-2.5 text-[13px] text-white/60 cursor-pointer hover:text-white transition-colors">
-                <input
-                  type="radio"
-                  checked={theme === 'dark'}
-                  onChange={() => setTheme('dark')}
-                  className="accent-white"
-                />
+          <div className="flex flex-col gap-2">
+            <label className="text-[13px] font-medium text-white">Editor Theme</label>
+            <div className="flex bg-[#181818] border border-white/10 rounded-lg p-1 w-full relative">
+              <button
+                onClick={() => setTheme('dark')}
+                className={`flex-1 flex items-center justify-center text-[12px] font-medium py-1.5 rounded-md transition-colors ${theme === 'dark' ? 'bg-[#2a2a2a] text-white border border-white/5 shadow-sm' : 'text-white/40 hover:text-white/80'}`}
+              >
                 Dark
-              </label>
-              <label className="flex items-center gap-2.5 text-[13px] text-white/60 cursor-pointer hover:text-white transition-colors">
-                <input
-                  type="radio"
-                  checked={theme === 'light'}
-                  onChange={() => setTheme('light')}
-                  className="accent-white"
-                />
+              </button>
+              <button
+                onClick={() => setTheme('light')}
+                className={`flex-1 flex items-center justify-center text-[12px] font-medium py-1.5 rounded-md transition-colors ${theme === 'light' ? 'bg-[#2a2a2a] text-white border border-white/5 shadow-sm' : 'text-white/40 hover:text-white/80'}`}
+              >
                 Light
-              </label>
+              </button>
             </div>
           </div>
 
-          <div className="space-y-2.5">
-            <label className="flex justify-between text-[13px] font-medium text-white/80">
-              <span>Editor Font Size</span>
-              <span className="text-white/40 font-mono">{fontSize}px</span>
-            </label>
-            <input
-              type="range"
-              min="12"
-              max="24"
-              value={fontSize}
-              onChange={(e) => setFontSize(parseInt(e.target.value))}
-              className="w-full accent-white"
-            />
+          <div className="flex flex-col gap-2">
+            <div className="flex justify-between items-center">
+              <label className="text-[13px] font-medium text-white">Editor Font Size</label>
+              <span className="text-[11px] text-white/40 font-mono bg-[#181818] border border-white/10 px-2 py-0.5 rounded">{fontSize}px</span>
+            </div>
+            <div className="pt-2 pb-1">
+              <input
+                type="range"
+                min="12"
+                max="24"
+                value={fontSize}
+                onChange={(e) => setFontSize(parseInt(e.target.value))}
+                className="w-full h-1.5 cursor-pointer bg-white/10 rounded-lg appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-md hover:[&::-webkit-slider-thumb]:scale-110 transition-all outline-none"
+              />
+            </div>
           </div>
 
           <div className="pt-4 border-t border-white/5">
             <button
               onClick={handleExport}
-              className="w-full py-2 bg-white/5 hover:bg-white/10 text-white rounded-lg flex items-center justify-center gap-2 transition-colors border border-white/10 text-[13px]"
+              className="w-full py-2.5 bg-white/5 hover:bg-white/10 text-white rounded-lg flex items-center justify-center gap-2 transition-colors border border-white/10 text-[13px] font-medium shadow-sm hover:border-white/20"
             >
               <Download size={14} />
               Export Notes as .zip
