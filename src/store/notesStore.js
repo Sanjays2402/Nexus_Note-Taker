@@ -8,6 +8,7 @@ export const useStore = create(
       notes: {},
       settings: {
         theme: 'dark',
+        fontFamily: 'sans', // 'sans', 'serif', 'mono'
         fontSize: 14,
         aiProvider: 'claude', // 'claude' or 'openai'
         claudeApiKey: '',

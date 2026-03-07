@@ -18,7 +18,11 @@ export default function App() {
     } else {
       document.documentElement.classList.remove('light');
     }
-  }, [settings.theme]);
+    
+    // Apply font-family
+    document.body.classList.remove('font-sans', 'font-serif', 'font-mono');
+    document.body.classList.add(`font-${settings.fontFamily || 'sans'}`);
+  }, [settings.theme, settings.fontFamily]);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isGraphOpen, setIsGraphOpen] = useState(false);
   const [isAIOpen, setIsAIOpen] = useState(false);

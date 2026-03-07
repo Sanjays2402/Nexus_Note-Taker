@@ -10,6 +10,7 @@ export default function SettingsModal({ isOpen, onClose }) {
   const [claudeKey, setClaudeKey] = useState(settings.claudeApiKey || '');
   const [openAiKey, setOpenAiKey] = useState(settings.openAiApiKey || '');
   const [theme, setTheme] = useState(settings.theme || 'dark');
+  const [fontFamily, setFontFamily] = useState(settings.fontFamily || 'sans');
   const [fontSize, setFontSize] = useState(settings.fontSize || 14);
 
   if (!isOpen) return null;
@@ -20,6 +21,7 @@ export default function SettingsModal({ isOpen, onClose }) {
       claudeApiKey: claudeKey,
       openAiApiKey: openAiKey,
       theme,
+      fontFamily,
       fontSize
     });
     onClose();
@@ -105,6 +107,30 @@ export default function SettingsModal({ isOpen, onClose }) {
                 className={`flex-1 flex items-center justify-center text-[12px] font-medium py-1.5 rounded-md transition-colors ${theme === 'light' ? 'bg-[#2a2a2a] text-white border border-white/5 shadow-sm' : 'text-white/40 hover:text-white/80'}`}
               >
                 Light
+              </button>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="text-[13px] font-medium text-white">Typography</label>
+            <div className="flex bg-[#181818] border border-white/10 rounded-lg p-1 w-full relative">
+              <button
+                onClick={() => setFontFamily('sans')}
+                className={`flex-1 flex items-center justify-center text-[12px] font-medium py-1.5 rounded-md transition-colors font-sans ${fontFamily === 'sans' ? 'bg-[#2a2a2a] text-white border border-white/5 shadow-sm' : 'text-white/40 hover:text-white/80'}`}
+              >
+                Sans
+              </button>
+              <button
+                onClick={() => setFontFamily('serif')}
+                className={`flex-1 flex items-center justify-center text-[12px] font-medium py-1.5 rounded-md transition-colors font-serif ${fontFamily === 'serif' ? 'bg-[#2a2a2a] text-white border border-white/5 shadow-sm' : 'text-white/40 hover:text-white/80'}`}
+              >
+                Serif
+              </button>
+              <button
+                onClick={() => setFontFamily('mono')}
+                className={`flex-1 flex items-center justify-center text-[12px] font-medium py-1.5 rounded-md transition-colors font-mono ${fontFamily === 'mono' ? 'bg-[#2a2a2a] text-white border border-white/5 shadow-sm' : 'text-white/40 hover:text-white/80'}`}
+              >
+                Mono
               </button>
             </div>
           </div>

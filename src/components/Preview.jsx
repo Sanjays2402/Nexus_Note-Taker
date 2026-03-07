@@ -78,6 +78,8 @@ export default function Preview() {
           className="prose prose-invert prose-p:leading-[1.7] max-w-none text-[#A0A0A0]
             prose-headings:text-[#EEEEEE] prose-headings:font-medium prose-headings:tracking-tight
             prose-a:text-white prose-a:underline hover:prose-a:text-gray-300
+            prose-ul:list-disc prose-ul:pl-5 prose-ol:list-decimal prose-ol:pl-5 prose-li:my-1 prose-li:marker:text-white/40
+            prose-strong:text-[#EEEEEE] prose-strong:font-semibold
             prose-code:bg-white/[0.04] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-[#EEEEEE] prose-code:font-mono prose-code:text-[13px] prose-code:before:content-none prose-code:after:content-none
             prose-pre:bg-black prose-pre:border prose-pre:border-white/5 prose-pre:p-4 prose-pre:rounded-lg"
           dangerouslySetInnerHTML={{ __html: htmlContent }}
