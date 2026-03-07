@@ -37,90 +37,90 @@ export default function SettingsModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center" onClick={onClose}>
-      <div 
-        className="bg-dark-sidebar border border-gray-700 w-full max-w-md rounded-xl shadow-2xl overflow-hidden flex flex-col"
+    <div className="fixed inset-0 bg-black/40 backdrop-blur-md z-50 flex items-center justify-center" onClick={onClose}>
+      <div
+        className="bg-[#111] border border-white/10 w-full max-w-md rounded-xl shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between p-4 border-b border-gray-800">
-          <div className="flex items-center gap-2">
-            <SettingsIcon size={18} className="text-gray-400" />
-            <h2 className="font-bold text-text-primary text-lg">Settings</h2>
+        <div className="flex items-center justify-between px-5 py-4 border-b border-white/5">
+          <div className="flex items-center gap-2.5">
+            <SettingsIcon size={16} className="text-white/40" />
+            <h2 className="font-medium text-text-primary text-[14px]">Settings</h2>
           </div>
-          <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors">
-            <X size={18} />
+          <button onClick={onClose} className="text-white/40 hover:text-white transition-colors">
+            <X size={16} />
           </button>
         </div>
 
         <div className="p-6 flex flex-col gap-6">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300">Claude API Key</label>
-            <input 
-              type="password" 
+          <div className="space-y-2.5">
+            <label className="text-[13px] font-medium text-white/80">Claude API Key</label>
+            <input
+              type="password"
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
               placeholder="sk-ant-..."
-              className="w-full bg-gray-900 border border-gray-700 rounded-md px-3 py-2 text-sm text-text-primary outline-none focus:border-brand-500"
+              className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-[13px] text-text-primary outline-none focus:border-white/30 transition-colors placeholder-white/20"
             />
-            <p className="text-xs text-gray-500">Stored locally in your browser.</p>
+            <p className="text-[11px] text-white/40">Stored locally in your browser.</p>
           </div>
 
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300">Editor Theme</label>
+          <div className="space-y-2.5">
+            <label className="text-[13px] font-medium text-white/80">Editor Theme</label>
             <div className="flex gap-4">
-              <label className="flex items-center gap-2 text-sm text-gray-400 cursor-pointer">
-                <input 
-                  type="radio" 
-                  checked={theme === 'dark'} 
+              <label className="flex items-center gap-2.5 text-[13px] text-white/60 cursor-pointer hover:text-white transition-colors">
+                <input
+                  type="radio"
+                  checked={theme === 'dark'}
                   onChange={() => setTheme('dark')}
-                  className="accent-brand-500"
+                  className="accent-white"
                 />
                 Dark
               </label>
-              <label className="flex items-center gap-2 text-sm text-gray-400 cursor-pointer">
-                <input 
-                  type="radio" 
-                  checked={theme === 'light'} 
+              <label className="flex items-center gap-2.5 text-[13px] text-white/60 cursor-pointer hover:text-white transition-colors">
+                <input
+                  type="radio"
+                  checked={theme === 'light'}
                   onChange={() => setTheme('light')}
-                  className="accent-brand-500"
+                  className="accent-white"
                 />
                 Light
               </label>
             </div>
           </div>
 
-          <div className="space-y-2">
-            <label className="flex justify-between text-sm font-medium text-gray-300">
+          <div className="space-y-2.5">
+            <label className="flex justify-between text-[13px] font-medium text-white/80">
               <span>Editor Font Size</span>
-              <span>{fontSize}px</span>
+              <span className="text-white/40 font-mono">{fontSize}px</span>
             </label>
-            <input 
-              type="range" 
-              min="12" 
-              max="24" 
+            <input
+              type="range"
+              min="12"
+              max="24"
               value={fontSize}
               onChange={(e) => setFontSize(parseInt(e.target.value))}
-              className="w-full accent-brand-500"
+              className="w-full accent-white"
             />
           </div>
 
-          <div className="pt-4 border-t border-gray-800">
-            <button 
+          <div className="pt-4 border-t border-white/5">
+            <button
               onClick={handleExport}
-              className="w-full py-2 bg-gray-800 hover:bg-gray-700 text-text-primary rounded-md flex items-center justify-center gap-2 transition-colors border border-gray-700"
+              className="w-full py-2 bg-white/5 hover:bg-white/10 text-white rounded-lg flex items-center justify-center gap-2 transition-colors border border-white/10 text-[13px]"
             >
-              <Download size={16} />
+              <Download size={14} />
               Export Notes as .zip
             </button>
           </div>
         </div>
 
-        <div className="p-4 border-t border-gray-800 bg-gray-900/50 flex justify-end">
-          <button 
+        <div className="px-5 py-4 border-t border-white/5 bg-black/50 flex justify-end">
+          <button
             onClick={handleSave}
-            className="px-6 py-2 bg-brand-500 hover:bg-brand-600 text-white rounded-md flex items-center gap-2 transition-colors text-sm font-medium"
+            className="px-5 py-1.5 bg-white hover:bg-gray-200 text-black rounded-lg flex items-center gap-2 transition-colors text-[13px] font-medium shadow-sm"
           >
-            <Save size={16} />
+            <Save size={14} />
             Save Changes
           </button>
         </div>

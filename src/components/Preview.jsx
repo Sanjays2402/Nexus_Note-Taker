@@ -68,18 +68,18 @@ export default function Preview() {
   if (!currentNote) return null;
 
   return (
-    <div className="flex-1 h-full bg-dark-bg p-10 overflow-y-auto hidden lg:block">
-      <div className="max-w-3xl mx-auto mt-2">
-        <h1 className="text-5xl font-extrabold tracking-tight mb-8 text-text-primary pb-4">
-          {currentNote.title || 'Untitled'}
+    <div className="flex-1 h-full bg-[#050505] overflow-y-auto hidden lg:block relative text-[15px]">
+      <div className="max-w-3xl mx-auto px-8 sm:px-12 w-full pt-20 pb-12">
+        <h1 className="text-4xl font-semibold tracking-tight mb-8 text-text-primary pb-6 border-b border-white/5">
+          {currentNote.title || 'Untitled Note'}
         </h1>
-        <div 
+        <div
           ref={containerRef}
-          className="prose prose-invert prose-lg max-w-none text-gray-300
-            prose-headings:text-text-primary prose-headings:font-bold prose-headings:tracking-tight
-            prose-a:text-link prose-a:no-underline hover:prose-a:underline
-            prose-code:bg-gray-800/80 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-medium prose-code:before:content-none prose-code:after:content-none
-            prose-pre:bg-gray-900/80 prose-pre:border prose-pre:border-gray-800/60 prose-pre:p-5 prose-pre:rounded-xl prose-pre:shadow-sm"
+          className="prose prose-invert prose-p:leading-[1.7] max-w-none text-[#A0A0A0]
+            prose-headings:text-[#EEEEEE] prose-headings:font-medium prose-headings:tracking-tight
+            prose-a:text-white prose-a:underline hover:prose-a:text-gray-300
+            prose-code:bg-white/[0.04] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-[#EEEEEE] prose-code:font-mono prose-code:text-[13px] prose-code:before:content-none prose-code:after:content-none
+            prose-pre:bg-black prose-pre:border prose-pre:border-white/5 prose-pre:p-4 prose-pre:rounded-lg"
           dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
       </div>

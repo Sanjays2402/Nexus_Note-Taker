@@ -132,17 +132,17 @@ export default function GraphView({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-dark-bg z-40 flex flex-col">
-      <div className="flex justify-between items-center p-4 border-b border-gray-800 shrink-0">
-        <h2 className="text-xl font-bold text-text-primary text-brand-500">Knowledge Graph</h2>
-        <button 
+    <div className="fixed inset-0 bg-[#050505]/95 backdrop-blur-xl z-40 flex flex-col pt-10 px-10 pb-10">
+      <div className="flex justify-between items-center px-4 py-3 shrink-0 absolute top-4 left-4 right-4 z-50 pointer-events-none">
+        <h2 className="text-lg font-medium text-white tracking-tight pointer-events-auto bg-black/50 px-4 py-2 rounded-full border border-white/10 backdrop-blur-md">Knowledge Graph</h2>
+        <button
           onClick={onClose}
-          className="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded transition-colors"
+          className="px-4 py-2 bg-white text-black hover:bg-gray-200 rounded-full transition-colors text-[13px] font-medium pointer-events-auto shadow-xl"
         >
-          Close Graph
+          Close View
         </button>
       </div>
-      <div className="flex-1 w-full" ref={containerRef} />
+      <div className="flex-1 w-full bg-black border border-white/5 rounded-2xl shadow-2xl relative overflow-hidden" ref={containerRef} />
     </div>
   );
 }

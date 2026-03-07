@@ -63,35 +63,46 @@ export default function Editor() {
   if (!currentNote) return null;
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-dark-editor border-r border-gray-800/40">
-      <div className="px-10 pt-12 pb-6 max-w-4xl mx-auto w-full">
-        <input 
-          type="text" 
-          value={localTitle}
-          onChange={handleTitleChange}
-          placeholder="Untitled"
-          className="w-full bg-transparent text-5xl font-extrabold tracking-tight text-text-primary outline-none placeholder-gray-600/50"
-        />
-      </div>
-      
-      <div className="flex-1 overflow-y-auto px-10 max-w-4xl w-full mx-auto pb-10">
-        <CodeMirror
-          value={localContent}
-          theme={settings.theme === 'dark' ? 'dark' : 'light'}
-          extensions={extensions}
-          onChange={handleContentChange}
-          className="h-full text-lg w-full"
-          style={{ fontSize: `${settings.fontSize}px` }}
-        />
-      </div>
-      
-      {/* Status bar */}
-      <div className="p-3 px-6 border-t border-gray-800/40 text-xs font-medium text-gray-500 flex items-center justify-between bg-dark-bg">
-        <div className="flex gap-4">
-          <span>{localContent.trim() ? localContent.trim().split(/\s+/).length : 0} words</span>
-          <span>{localContent.length} characters</span>
+    <div className="flex-1 flex flex-col h-full bg-dark-editor relative border-r border-white/5">
+      <div className="flex-1 overflow-y-auto w-full">
+        <div className="max-w-3xl mx-auto px-8 sm:px-12 w-full pt-20 pb-4">
+          <input
+            type="text"
+            value={localTitle}
+            onChange={handleTitleChange}
+            placeholder="Untitled Note"
+            className="w-full bg-transparent text-4xl font-semibold tracking-tight text-text-primary outline-none placeholder-gray-700 mb-8"
+          />
+          <CodeMirror
+            value={localContent}
+            theme={settings.theme === 'dark' ? 'dark' : 'light'}
+            extensions={extensions}
+            onChange={handleContentChange}
+            basicSetup={{
+              lineNumbers: false,
+              foldGutter: false,
+              highlightActiveLine: false,
+              highlightActiveLineGutter: false,
+              dropCursor: false,
+              allowMultipleSelections: false,
+              indentOnInput: false,
+              syntaxHighlighting: true,
+              bracketMatching: true,
+              closeBrackets: true,
+              history: true,
+            }}
+            className="text-lg w-full min-h-[50vh]"
+            style={{ fontSize: `${settings.fontSize}px` }}
+          />
         </div>
-        <span>Last edited: {new Date(currentNote.modified).toLocaleString()}</span>
+      </div>
+
+      {/* Floating Status pill */}
+      <div className="absolute bottom-6 right-8 px-4 py-2 rounded-full border border-white/5 bg-[#141414]/90 backdrop-blur-xl text-[11px] text-text-muted flex items-center gap-4 shadow-2xl z-10 hidden sm:flex">
+        <span>{localContent.trim() ? localContent.trim().split(/\s+/).length : 0} words</span>
+        <span>{localContent.length} chars</span>
+        <div className="w-[1px] h-3 bg-white/10"></div>
+        <span>Edited {new Date(currentNote.modified).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
       </div>
     </div>
   );

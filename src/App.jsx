@@ -74,38 +74,28 @@ export default function App() {
         </>
       ) : (
         <div className="flex-1 bg-dark-bg flex flex-col items-center justify-center">
-          <div className="text-center max-w-lg p-10 bg-gray-900/20 rounded-3xl border border-gray-800/30 shadow-2xl backdrop-blur-xl">
-            <div className="w-20 h-20 bg-brand-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6 ring-1 ring-brand-500/20">
-              <svg className="text-brand-500 w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          <div className="flex flex-col items-center max-w-sm text-center">
+            <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-6 border border-white/10 shadow-2xl">
+              <svg className="text-white/60 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
               </svg>
             </div>
-            <h2 className="text-3xl text-text-primary font-bold mb-3 tracking-tight">Nexus Notes</h2>
-            <p className="text-gray-500 text-lg mb-8">Your personal knowledge base</p>
+            <h2 className="text-xl text-text-primary font-medium mb-2 tracking-tight">Nexus</h2>
+            <p className="text-text-muted text-sm mb-8">A thoughtful space for your thoughts.</p>
             
-            <div className="grid grid-cols-2 gap-3 text-sm text-gray-400 text-left">
-              <div className="bg-gray-800/30 hover:bg-gray-800/50 p-4 border border-gray-800/50 rounded-xl transition-colors">
-                <kbd className="bg-black/50 border border-gray-700/50 font-mono text-xs px-2 py-1 mx-1 rounded shadow-sm text-gray-300">Cmd+K</kbd> Search Notes
+            <div className="flex flex-col gap-2 w-full text-sm text-text-muted text-left">
+              <div className="flex justify-between items-center px-4 py-2 border border-white/5 bg-white/[0.02] rounded-lg">
+                <span>New Note</span>
+                <kbd className="font-mono text-xs text-white/40">Cmd+N</kbd>
               </div>
-              <div className="bg-gray-800/30 hover:bg-gray-800/50 p-4 border border-gray-800/50 rounded-xl transition-colors">
-                <kbd className="bg-black/50 border border-gray-700/50 font-mono text-xs px-2 py-1 mx-1 rounded shadow-sm text-gray-300">Cmd+G</kbd> Knowledge Graph
+              <div className="flex justify-between items-center px-4 py-2 border border-white/5 bg-white/[0.02] rounded-lg">
+                <span>Search</span>
+                <kbd className="font-mono text-xs text-white/40">Cmd+K</kbd>
               </div>
-              <div className="bg-gray-800/30 hover:bg-gray-800/50 p-4 border border-gray-800/50 rounded-xl transition-colors">
-                <kbd className="bg-black/50 border border-gray-700/50 font-mono text-xs px-2 py-1 mx-1 rounded shadow-sm text-gray-300">Cmd+N</kbd> New Note
+              <div className="flex justify-between items-center px-4 py-2 border border-white/5 bg-white/[0.02] rounded-lg">
+                <span>Graph View</span>
+                <kbd className="font-mono text-xs text-white/40">Cmd+G</kbd>
               </div>
-              <div className="bg-gray-800/30 hover:bg-gray-800/50 p-4 border border-gray-800/50 rounded-xl transition-colors">
-                <kbd className="bg-black/50 border border-gray-700/50 font-mono text-xs px-2 py-1 mx-1 rounded shadow-sm text-gray-300">Cmd+/</kbd> AI Chat
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <AiChat isOpen={isAIOpen} onClose={() => setIsAIOpen(false)} />
-
-      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-      <GraphView isOpen={isGraphOpen} onClose={() => setIsGraphOpen(false)} />
-      <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
-    </div>
-  );
-}
+              <div className="flex justify-between items-center px-4 py-2 border border-white/5 bg-white/[0.02] rounded-lg">
+                <span>AI Chat</span>
+                <kbd className="font-mono text-xs text-white/40">Cmd+/</kbd>
