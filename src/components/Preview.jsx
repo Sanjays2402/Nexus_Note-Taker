@@ -68,18 +68,18 @@ export default function Preview() {
   if (!currentNote) return null;
 
   return (
-    <div className="flex-1 h-full bg-dark-bg p-8 overflow-y-auto hidden lg:block">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-text-primary border-b border-gray-800 pb-4">
-          {currentNote.title || 'Untitled Note'}
+    <div className="flex-1 h-full bg-dark-bg p-10 overflow-y-auto hidden lg:block">
+      <div className="max-w-3xl mx-auto mt-2">
+        <h1 className="text-5xl font-extrabold tracking-tight mb-8 text-text-primary pb-4">
+          {currentNote.title || 'Untitled'}
         </h1>
         <div 
           ref={containerRef}
           className="prose prose-invert prose-lg max-w-none text-gray-300
-            prose-headings:text-text-primary
+            prose-headings:text-text-primary prose-headings:font-bold prose-headings:tracking-tight
             prose-a:text-link prose-a:no-underline hover:prose-a:underline
-            prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
-            prose-pre:bg-gray-900 prose-pre:p-4 prose-pre:rounded-lg"
+            prose-code:bg-gray-800/80 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:font-medium prose-code:before:content-none prose-code:after:content-none
+            prose-pre:bg-gray-900/80 prose-pre:border prose-pre:border-gray-800/60 prose-pre:p-5 prose-pre:rounded-xl prose-pre:shadow-sm"
           dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
       </div>

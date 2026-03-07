@@ -63,32 +63,34 @@ export default function Editor() {
   if (!currentNote) return null;
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-dark-editor border-r border-gray-800">
-      <div className="p-4 border-b border-gray-800">
+    <div className="flex-1 flex flex-col h-full bg-dark-editor border-r border-gray-800/40">
+      <div className="px-10 pt-12 pb-6 max-w-4xl mx-auto w-full">
         <input 
           type="text" 
           value={localTitle}
           onChange={handleTitleChange}
-          placeholder="Note Title"
-          className="w-full bg-transparent text-2xl font-bold text-text-primary outline-none placeholder-gray-600"
+          placeholder="Untitled"
+          className="w-full bg-transparent text-5xl font-extrabold tracking-tight text-text-primary outline-none placeholder-gray-600/50"
         />
       </div>
       
-      <div className="flex-1 overflow-y-auto custom-editor">
+      <div className="flex-1 overflow-y-auto px-10 max-w-4xl w-full mx-auto pb-10">
         <CodeMirror
           value={localContent}
-          height="100%"
           theme={settings.theme === 'dark' ? 'dark' : 'light'}
           extensions={extensions}
           onChange={handleContentChange}
-          className="h-full text-lg"
+          className="h-full text-lg w-full"
           style={{ fontSize: `${settings.fontSize}px` }}
         />
       </div>
       
       {/* Status bar */}
-      <div className="p-2 px-4 border-t border-gray-800 text-xs text-gray-500 flex items-center justify-between">
-        <span>{localContent.trim() ? localContent.trim().split(/\s+/).length : 0} words</span>
+      <div className="p-3 px-6 border-t border-gray-800/40 text-xs font-medium text-gray-500 flex items-center justify-between bg-dark-bg">
+        <div className="flex gap-4">
+          <span>{localContent.trim() ? localContent.trim().split(/\s+/).length : 0} words</span>
+          <span>{localContent.length} characters</span>
+        </div>
         <span>Last edited: {new Date(currentNote.modified).toLocaleString()}</span>
       </div>
     </div>
