@@ -44,6 +44,6 @@
     "vite": "^8.0.0-beta.13"
   },
   "overrides": {
-    "vite": "^8.0.0-beta.13"
+    "postcss-selector-parser": "7.1.6"
   }
 }
